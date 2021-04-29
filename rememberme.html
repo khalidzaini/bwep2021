@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function rememberMe(){
+			var name = document.getElementById("name");
+			var email = document.getElementById("email");
+
+			localStorage.setItem("name", name.value);
+			localStorage.setItem("email", email.value);
+			alert("I remember you now!");
+		}
+	</script>
+</head>
+<body>
+	<p>lorem</p>
+<input type="text" id="name" placeholder="YOur name"><br>
+<input type="email" id="email" placeholder="YOur email"><br>
+<button onclick="rememberMe()">Remember me!</button>
+
+</body>
+</html>

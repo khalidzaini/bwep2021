@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function reveal(){
+			var name = document.getElementById("name");
+			var email = document.getElementById("email");
+
+			name.value = localStorage.getItem("name");
+			email.value = localStorage.getItem("email");
+			// alert("You have been revealed!");
+		}
+		function fillin(){
+			var name1 = document.getElementById("name1");
+			var email1 = document.getElementById("email1");
+
+			name1.innerHTML = localStorage.getItem("name");
+			email1.innerHTML = localStorage.getItem("email");
+		
+		}
+	</script>
+</head>
+<body onload="fillin()">
+	<p>lorem</p>
+<input type="text" id="name" placeholder="YOur name"><br>
+<input type="email" id="email" placeholder="YOur email"><br>
+<button onclick="reveal()">Reveal me!</button>
+<div id="name1" contenteditable="true">nama</div>
+<div id="email1">Email</div>
+
+</body>
+</html>

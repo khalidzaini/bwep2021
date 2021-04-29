@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#canvas{
+			width:600px;
+			height: 600px;
+			border:thin solid;
+		}
+	</style>
+	<script type="text/javascript">
+		function changer(value){
+			var canvas = document.getElementById("canvas");
+			if(value==1){
+				canvas.style.backgroundImage="url(images/1.jpg)";
+			}
+			else if(value==2){
+				canvas.style.backgroundImage="url(images/2.jpg)";
+			}
+			else if(value==3){
+				canvas.style.backgroundImage="url(images/3.jpg)";
+			}
+				
+			canvas.style.opacity="0.5";
+		}
+	</script>
+</head>
+<body>
+<select onchange="changer(this.value)">
+	<option value="0">please select</option>
+	<option value="1">Bunga</option>
+	<option value="2">Koala</option>
+	<option value="3">Pingu</option>
+</select>
+<div id="canvas"></div>
+</body>
+</html>

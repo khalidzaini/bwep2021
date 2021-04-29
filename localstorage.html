@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.inserttxt > p {cursor: pointer;padding:5px 10px; display: inline-block;}
+		#card{width:45%;float:left;}
+		#textchoices{width:45%;float:right;}
+	</style>
+
+</head>
+<body>
+	<div id="card">
+<input type="text" id="greetings"  placeholder="What's the greeting?"> <p></p>
+Dear <input type="text" id="salutation" size="5"  placeholder="Salutation" ><p></p>
+<div id="cardcontent" contenteditable="true" onclick="beginTyping()">Type your card contents here</div>
+<input type="text" id="closing" placeholder="closing touch"><p></p>
+	<button onclick="saveCard()">Save Card</button>
+</div>
+<div id="textchoices">
+	<p>click the text to insert greetings/salutation/closing</p>
+	<h3>Greetings</h3>
+	<div class="inserttxt">
+	<p id="g0" onclick="insertGreetings('salam')"></p>
+	<p id="g1" onclick="insertGreetings('sejahtera')"></p>
+	<p id="g2" onclick="insertGreetings('gm')"></p>
+	<p id="g3" onclick="insertGreetings('gd')"></p>
+	</div>
+	<h3>Salutation</h3>
+	<div class="inserttxt">
+	<p id="dr" onclick="insertSalutation('dr')"></p>
+	<p id="mr" onclick="insertSalutation('mr')"></p>
+	<p id="ms" onclick="insertSalutation('ms')"></p>
+	<p id="mrs" onclick="insertSalutation('mrs')"></p>
+	</div>
+	<h3>Closing</h3>
+	<div class="inserttxt">
+	<p id="c0" onclick="insertClosing(this.id)"></p>
+	<p id="c1" onclick="insertClosing(this.id)"></p>
+	<p id="c2" onclick="insertClosing(this.id)"></p>
+	<p id="c3" onclick="insertClosing(this.id)"></p>
+	</div>
+
+</div>
+	<script>
+		localStorage.setItem("dr", "Dr");
+		localStorage.setItem("mr", "Mr");
+		localStorage.setItem("ms", "Ms");
+		localStorage.setItem("mrs", "Mrs");
+
+		document.getElementById("dr").innerHTML = localStorage.getItem("dr");
+		document.getElementById("mr").innerHTML = localStorage.getItem("mr");
+		document.getElementById("ms").innerHTML = localStorage.getItem("ms");
+		document.getElementById("mrs").innerHTML = localStorage.getItem("mrs");
+
+
+		//using array! more neat!
+		var greetings = ["Assalamualikum wbt", "Salam Sejahtera", "Good Day", "Good Morning"];
+
+		for (var i = 0; i < greetings.length; i++) {
+			localStorage.setItem(greetings[i],greetings[i]);
+		}
+
+		for (var i = 0; i < greetings.length; i++) {
+			document.getElementById("g"+i).innerHTML = localStorage.getItem(greetings[i]);
+		}
+
+		var closings = ["Yours truly", "Warm Regards", "Best Regards", "Yours Sincerely"];
+
+		for (var i = 0; i < closings.length; i++) {
+			localStorage.setItem(closings[i],closings[i]);
+		}
+
+		for (var i = 0; i < closings.length; i++) {
+			document.getElementById("c"+i).innerHTML = localStorage.getItem(closings[i]);
+		}
+
+		//alert(greetings[0]);
+
+		function insertSalutation(text){
+			var salutation = document.getElementById("salutation");
+
+			if(text=="dr"){
+				salutation.value= localStorage.getItem("dr");
+			}else if(text=="mr"){
+				salutation.value= localStorage.getItem("mr");
+
+			}else if(text=="ms"){
+				salutation.value= localStorage.getItem("ms");
+
+			}else if(text=="mrs"){
+				salutation.value= localStorage.getItem("mrs");
+
+			}
+
+		}
+
+		function insertGreetings(text){
+			var greetingTxt = document.getElementById("greetings");
+
+			if(text=="salam"){
+				greetingTxt.value= localStorage.getItem(localStorage.getItem(greetings[0]));
+			}else if(text=="sejahtera"){
+				greetingTxt.value= localStorage.getItem(localStorage.getItem(greetings[1]));
+
+			}else if(text=="gd"){
+				greetingTxt.value= localStorage.getItem(localStorage.getItem(greetings[2]));
+
+			}else if(text=="gm"){
+				greetingTxt.value= localStorage.getItem(localStorage.getItem(greetings[3]));
+
+			}
+
+		}
+			function insertClosing(text){
+			var closingTxt = document.getElementById("closing");
+
+			for (var i = 0; i < closings.length; i++) {
+				if(text==("c"+i)){
+					closingTxt.value = localStorage.getItem(localStorage.getItem(closings[i]));
+				}
+			}
+
+		}
+
+		function beginTyping(){
+			var cardcontent = document.getElementById("cardcontent");
+
+			if(cardcontent.innerHTML=="Type your card contents here"){
+				cardcontent.innerHTML="";
+			}
+
+		}
+
+		function saveCard(){
+			localStorage.setItem("c1-greeting", document.getElementById("greetings").value);
+			localStorage.setItem("c1-salutation", document.getElementById("salutation").value);
+			localStorage.setItem("c1-cardcontent", document.getElementById("cardcontent").innerHTML);
+			localStorage.setItem("c1-closing", document.getElementById("closing").value);
+		}
+	</script>
+</body>
+</html>

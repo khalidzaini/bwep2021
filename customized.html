@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href='https://fonts.googleapis.com/css?family=Advent Pro|Alex Brush|Almendra|Bad Script' rel='stylesheet'>
+	<style>
+		body{
+			display:grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: 1em;	
+			height:90vh;
+			font-size:1.5em;
+		}
+
+		#panel1{
+				display:grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(3, 50px) 300px 50px; 
+				grid-row-gap:1em;
+		}
+
+		.editable{
+			color:grey;
+			border: thin solid grey;
+			padding: 0.5em 0;text-align: center
+
+		}
+		.cc{
+
+		}
+	</style>
+
+	<script>
+		function changeFont(value){
+			//Advent Pro|Alex Brush|Almendra|Bad Script
+			var panel1 = document.getElementById("panel1");
+			if(value==1){
+				panel1.style.fontFamily="Advent Pro";
+			}
+			else if(value==2){
+					panel1.style.fontFamily="Alex Brush";
+			}
+			else if(value==3){
+					panel1.style.fontFamily="Almendra";
+			}
+			else if(value==4){
+					panel1.style.fontFamily="Bad Script";
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="panel1">
+		<div class="editable" contenteditable="true">recepient email</div>
+		<div class="editable" contenteditable="true">sender email</div>
+		<div class="editable" contenteditable="true">Type subject here</div>
+		<div  class="editable" contenteditable="true">Type you card content</div>
+		<div  class="editable" contenteditable="true">Closing</div>
+</div>
+<div class="panel">
+	<h3>Choose font customization</h3>
+	<input type="radio" name="fontc" value="1" onclick="changeFont(this.value)"><span style="font-family:Advent Pro">Advent Pro</span>
+	<input type="radio" name="fontc" value="2" onclick="changeFont(this.value)"><span style="font-family:Alex Brush">Alex Brush</span>
+	<input type="radio" name="fontc" value="3" onclick="changeFont(this.value)"><span style="font-family:Almendra">Almendra</span>
+	<input type="radio" name="fontc" value="4" onclick="changeFont(this.value)"><span style="font-family:Bad Script">Bad Script</span>
+</div>
+</body>
+</html>
